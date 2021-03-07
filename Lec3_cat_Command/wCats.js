@@ -26,7 +26,7 @@ for(let i=0 ; i<content.length ; i++){
 let fileKaData = "";
 for(let i=0 ; i<files.length ; i++){
     // f1.txt => f2.txt
-    fileKaData += fs.readFileSync( files[i] ) + "";
+    fileKaData += fs.readFileSync( files[i] );
 }
 
 console.log(fileKaData);
