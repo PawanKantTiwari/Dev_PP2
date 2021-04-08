@@ -8,7 +8,7 @@ let browserOpenPromises = puppeteer.launch({
     headless: false,
     defaultViewport: null,
     args: ["--start-maximized"],
-    slowMo: 100 //to slow the speed of working
+    // slowMo: 100 //to slow the speed of working
 });
 browserOpenPromises.then(function(browser){
     console.log("browser Opened Successfully");
@@ -27,9 +27,32 @@ browserOpenPromises.then(function(browser){
     let passTypePromise = firstOpenedTab.type("#input-2",pass);
     return passTypePromise;
 }).then(function(){
-    let loginPromise = firstOpenedTab.click('#tab-1-content-1 > div.login-form.auth-form.theme-m > form > div.form-item.clearfix > button > div > span');
+    let loginPromise = firstOpenedTab.click('#tab-1-content-1 > div.login-form.auth-form.theme-m > form > div.form-item.clearfix > button');
     return loginPromise;
-}).catch(function(error)
+}).then(function(){
+    let waitAndClickPromise = waitAndClick('#base-card-1-link')
+    return waitAndClickPromise;
+}).then(function(){
+    console.log("Interview Prepration Kit Clicked");
+    let waitAndClickPromise = waitAndClick('#base-card-6-link');
+    return waitAndClickPromise;
+})
+.catch(function(error)
 {
     console.log("Something Went Wrong");
 })
+
+
+function waitAndClick(selector){
+    return new Promise(function(resolve,rejected){
+        let waitPromise = firstOpenedTab.waitForSelector(selector,{visible:true});
+        waitPromise.then(function(){
+            let clickPromise = firstOpenedTab.click(selector);
+            return clickPromise;
+        }).then(function(){
+            resolve();
+        }).catch(function(error){
+            rejected(error);   
+        })
+    })
+}
