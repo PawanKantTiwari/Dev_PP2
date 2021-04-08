@@ -1,5 +1,5 @@
 const fs = require("fs");
-let pendingPromises = fs.promises.readFile("./f1.html");
+let pendingPromises = fs.promises.readFile("./f1.txt");
 console.log(pendingPromises);
 
 pendingPromises.then(function(data)
