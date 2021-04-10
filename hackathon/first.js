@@ -7,7 +7,21 @@ const fs = require("fs");
 let typedWords;
 
 //web scraping
+let url = "https://thepracticetest.com/typing/tests/practice-paragraphs/";
+request(url,cb);
+function cb(error,response,data)
+{
+        parseData(data);
+}
 
+function parseData(html)
+{
+    let ch = cheerio.load(html);
+    let words = ch('#typed');
+    typedWords = ch(words).text();
+    // fs.writeFileSync("./typedWords.html",words+"");
+    
+}
 
 
 //Automation
@@ -24,21 +38,6 @@ browserOpenPromises.then(function(browser){
 { 
     firstOpenedTab = pages[0];
     let pageOpenPromises = firstOpenedTab.goto("https://thepracticetest.com/typing/tests/practice-paragraphs/");
-    let url = "https://thepracticetest.com/typing/tests/practice-paragraphs/";
-        request(url,cb);
-        function cb(error,response,data)
-        {
-            parseData(data);
-        }
-
-        function parseData(html)
-        {
-        let ch = cheerio.load(html);
-        let waitPromise = firstOpenedTab.waitForSelector("#typed",{visible:true});
-        let words = ch('#typed');
-        typedWords = ch(words).text();
-        // fs.writeFileSync("./typedWords.html",words+"");
-        }
     return pageOpenPromises;
 }).then(function(){
     let url = "https://thepracticetest.com/typing/tests/practice-paragraphs/";
