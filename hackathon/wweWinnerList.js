@@ -5,7 +5,7 @@ let browserOpenPromises = puppeteer.launch({
     headless: false,
     defaultViewport: null,
     args: ["--start-maximized"],
-    // slowMo: 100 //to slow the speed of working
+    slowMo: 100 //to slow the speed of working
 });
 
 browserOpenPromises.then(function(browser){

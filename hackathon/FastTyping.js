@@ -3,10 +3,7 @@ const cheerio = require("cheerio");
 const puppeteer = require("puppeteer");
 const fs = require("fs");
 
-
-let typedWords;
-
-//web scraping
+// web scraping
 let url = "https://thepracticetest.com/typing/tests/practice-paragraphs/";
 request(url,cb);
 function cb(error,response,data)
@@ -40,7 +37,7 @@ browserOpenPromises.then(function(browser){
     let pageOpenPromises = firstOpenedTab.goto("https://thepracticetest.com/typing/tests/practice-paragraphs/");
     return pageOpenPromises;
 }).then(function(){
-    let url = "https://thepracticetest.com/typing/tests/practice-paragraphs/";
+    // let url = "https://thepracticetest.com/typing/tests/practice-paragraphs/";
     let idTypePromise = firstOpenedTab.type("#typing",typedWords);
     return idTypePromise;
 })
