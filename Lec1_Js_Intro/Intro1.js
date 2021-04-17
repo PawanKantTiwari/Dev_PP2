@@ -111,7 +111,7 @@ let values = [
     place: "Queens",
   },
   "Hey i am a value",
-  [1, 2, 3, 4, 5, 6] ,
+  [1, 2, 3, 4, 5, 6],
 ];
 // console.log(values);
 // console.log(values[2].place);
