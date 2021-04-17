@@ -1,0 +1,58 @@
+*{
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-display: BOLD;
+    font-size: large;
+}
+
+.input-container{
+    background-color: coral;
+    height: 30vh;
+    padding-top: 10vh;
+    padding-left: 30%;
+}
+
+.todo-input{
+    height: 50px;
+    width: 500px;
+    background-color: darkseagreen;
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+
+.add-todo{
+    height: 50px;
+    width: 200px;
+    background-color: darkolivegreen;
+}
+
+.todos-list{
+    background-color: lightgreen;
+    height: 70vh;
+}
+
+
+.todo-item{
+    width: 300px;
+    height: 100px;
+}
+.todo{
+    width: 1000px;
+    height: 30px;
+    border: 2px solid;
+    background-color: lightpink;
+    margin-left: 70%;
+    background-color: darksalmon;
+    border: 2px solid;
+    border-radius: 3px;
+    text-align: center;
+}
+.delete-task{
+    width: 200px;
+    height: 30px;
+    margin-left: 200%;
+    background-color: chocolate;
+    border-radius: 50px;
+}
