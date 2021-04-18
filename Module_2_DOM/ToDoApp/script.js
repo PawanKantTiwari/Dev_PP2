@@ -1,9 +1,9 @@
-let todoInput = document.querySelector(".todo-input"); 
+let todoInput = document.querySelector(".todo-input"); //it will contain the input
 let addTodoButton = document.querySelector(".add-todo"); 
 let todosList = document.querySelector(".todos-list"); 
 
 function addTodo(){
-    let todo = todoInput.value;
+    let todo = todoInput.value;// todo will contain input value
     //falsie values => {"" , 0 , false , undefined}
     if(todo){
         let listItem = document.createElement("li"); // it creates an element
