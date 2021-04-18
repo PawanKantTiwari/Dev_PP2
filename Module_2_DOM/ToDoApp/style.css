@@ -73,13 +73,9 @@ background: #82589F;
 
 /* a single row of list having list item and delete button  */
 .todo-item{
-
 display: block;
-
 margin: auto;
-
 background: #55E6C1;
-
 width: 709px;
 
 padding: 15px;
