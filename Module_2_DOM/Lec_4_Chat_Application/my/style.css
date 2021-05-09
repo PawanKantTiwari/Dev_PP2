@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+    outline: none;
+    margin: 0px;
+    font-family: 'Girassol', cursive;
+}
+
+.total-window {
+    display: flex;
+    /* min-width: 100vh; */
+    min-height: 100vh;
+    overflow: auto;
+}
+
+.left-window {
+    display: flex;
+    min-width: 25%;
+    min-height: 100vh;
+    background: #55efc4;
+}
+
+.right-window {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    min-width: 75%;
+    background: black;
+}
+
+.chat-window {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: start;
+    min-height: 90%;
+    min-width: 98%;
+    background: #81ecec;
+}
+
+.joined {
+    display: flex;
+    margin: 5px;
+    align-items: center;
+    justify-content: space-evenly;
+    min-height: 30px;
+    min-width: 98%;
+    background: #ff7675;
+    border-radius: 5px;
+}
+
+/* participent left the chat */
+.leave {
+    display: flex;
+    margin: 5px;
+    align-items: center;
+    justify-content: space-evenly;
+    min-height: 30px;
+    min-width: 98%;
+    background: #ffeaa7;
+    border-radius: 5px;
+}
+
+.left-chat {
+    display: flex;
+    margin: 5px;
+    margin-bottom: 0px;
+    padding: 5px;
+    padding: 3px;
+    /* justify-content: center; */
+    align-items: flex-start;
+    background: #6c5ce7;
+    border-radius: 5px;
+    min-height: 30px;
+    /* float: left; */
+    /* clear: both; */
+    width: 70%;
+    word-break: break-all;
+}
+
+.right-chat {
+    display: flex;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: 5px;
+    padding: 3px;
+    align-items: flex-start;
+    /* justify-content: center; */
+    background: #a29bfe;
+    border-radius: 5px;
+    min-height: 30px;
+    /* float: left; */
+    /* clear: both; */
+    width: 70%;
+    word-break: break-all;
+}
+
+.input-msg-window {
+    display: flex;
+    background: #00b894;
+    min-width: 98%;
+    min-height: 10%;
+    margin: auto;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.msg-box {
+    display: flex;
+    border-radius: 5px;
+    min-width: 80%;
+    min-height: 45%;
+    background: #dfe6e9;
+    padding: 2px;
+}
