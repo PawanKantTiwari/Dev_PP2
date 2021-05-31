@@ -1,76 +1,63 @@
-let addSheetBtn = document.querySelector(".add-sheet");
+let addSheetButton = document.querySelector(".add-sheet");
 let sheetsList = document.querySelector(".sheets-list");
-let sheetId = 0;
+let currentSheetId = 0;
 
-addSheetBtn.addEventListener("click", function (e) {
-  sheetId++;
-  // it will remove activesheet class from current active sheet
-  document.querySelector(".active-sheet").classList.remove("active-sheet");
+addSheetButton.addEventListener("click" , function(e){
+    currentSheetId++;
+    
+    //remove active-sheet class from currently active sheet is sheetsList
+    document.querySelector(".active-sheet").classList.remove("active-sheet");
 
-  let sheetDiv = document.createElement("div");
-  sheetDiv.classList.add("sheet");
-  sheetDiv.classList.add("active-sheet");
-  sheetDiv.setAttribute("sheetid", sheetId);
-  sheetDiv.innerHTML = `Sheet ${sheetId + 1}`;
+    let sheetDiv = document.createElement("div");
+    sheetDiv.classList.add("sheet");
+    sheetDiv.classList.add("active-sheet");
+    sheetDiv.setAttribute("sheetid" , currentSheetId);
+    sheetDiv.textContent = `Sheet ${currentSheetId+1}`;    
 
-  // <div class="sheet" sheetid="1">Sheet 2</div>
-  sheetsList.append(sheetDiv);
+    sheetsList.append(sheetDiv);
 
-  //UI should be new
-  initUI();
+    // init UI => reset ui to a fresh ui for new sheet
+    initUI();
+    // add a new db corresponding to this new sheet added
+    initDB(); // it will set the deault db to this new db
+})
 
-  // new sheet db 
-  // sheetsdb.push(new sheet db)
-  // db = new sheet db
-  initDB();
-});
+// clicking on sheet and change active sheet !!
+sheetsList.addEventListener("click" , function(e){
+    // check if clicked on remaining area on sheets list
+    // other than sheet
+    if(e.target.classList.contains("sheets-list") || e.target.classList.contains("active-sheet") ){
+        return;
+    }
+    //remove active-sheet class from currently active sheet is sheetsList
+    document.querySelector(".active-sheet").classList.remove("active-sheet");
 
-sheetsList.addEventListener("click", function (e) {
-  let selectedSheet = e.target;
-  // active-sheet
-  if (selectedSheet.classList.contains("active-sheet")) {
-    return;
-  }
-  // non active-sheet
-  // it will remove activesheet class from current active sheet
-  document.querySelector(".active-sheet").classList.remove("active-sheet");
-  selectedSheet.classList.add("active-sheet");
+    let sheetClicked = e.target;
+    sheetClicked.classList.add("active-sheet");
 
-  initUI();
+    // set current db to this sheet's db
+    let sheetId = sheetClicked.getAttribute("sheetid");
+    db = sheetsDB[sheetId];
 
-  //set current db to active sheet db;
-  let sheetId = selectedSheet.getAttribute("sheetid");
-  
-  // set db and visited cells
-  db = sheetsDB[sheetId].db;
-  visitedCells = sheetsDB[sheetId].visitedCells;
+    // also set ui to current db
+    setUI();
 
-  // set UI according to that db
-  setUI();
-});
+    console.log(sheetsDB);
+})
 
 function setUI(){
-    // for(let i=0 ; i<100 ; i++){
-    //     for(let j=0 ; j<26 ; j++){
-    //         let cellObject = db[i][j];
-    //         document.querySelector(`div[rowid="${i}"][colid="${j}"]`).textContent = cellObject.value; 
-    //     }
-    // }
-    for(let i=0 ; i<visitedCells.length ; i++){
-      let {rowId , colId} = visitedCells[i];
-      let cellObject = db[rowId][colId];
-      document.querySelector(`div[rowid="${rowId}"][colid="${colId}"]`).innerHTML = cellObject.value;
+    for(let i=0 ; i<100 ; i++){
+        for(let j=0 ; j<26 ; j++){
+            let cellObject = db[i][j];
+            document.querySelector(`div[rowid='${i}'][colid='${j}']`).textContent = cellObject.value;
+        }
     }
 }
 
 function initUI(){
-    // for(let i=0 ; i<100 ; i++){
-    //     for(let j=0 ; j<26 ; j++){
-    //         document.querySelector(`div[rowid="${i}"][colid="${j}"]`).innerHTML = "";
-    //     }
-    // }
-    for(let i=0 ; i<visitedCells.length ; i++){
-      let {rowId , colId} = visitedCells[i];
-      document.querySelector(`div[rowid="${rowId}"][colid="${colId}"]`).innerHTML = "";
+    for(let i=0 ; i<100;i++){
+        for(let j=0 ; j<26;j++){
+            document.querySelector(`div[rowid='${i}'][colid='${j}']`).innerHTML = "";
+        }
     }
 }

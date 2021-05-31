@@ -25,14 +25,14 @@ function initCells(){
 }
 initCells();
 
+// it represents the current db
+let db;
 
+// it will store all db's corresponding to sheet number
 let sheetsDB = [];
 
-let db; // active-sheet db
-let visitedCells; // active sheet ke visited cells
-
 function initDB(){
-    let newSheetDB = [];
+    let newDB = [];
     for(let i=0 ; i<100 ; i++){
         let row = [];
         for(let j=0 ; j<26 ; j++){
@@ -44,15 +44,14 @@ function initDB(){
                 formula:"",
                 childrens:[],
                 parents:[],
-                visited:false
+                fontStyle : {bold:false,italic:false,underline:false}
             }
             row.push(cellObject);
         }
-        newSheetDB.push(row);
+        newDB.push(row);
     }
-    visitedCells = [];
-    db = newSheetDB;
-    sheetsDB.push({db:newSheetDB ,visitedCells:visitedCells});
-    console.log(sheetsDB);
+    // db = newDB;
+    sheetsDB.push(newDB);
+    db = sheetsDB[sheetsDB.length-1];
 }
 initDB();
