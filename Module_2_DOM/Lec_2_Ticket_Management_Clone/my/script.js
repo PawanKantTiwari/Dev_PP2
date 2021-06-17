@@ -16,7 +16,7 @@ for(let i=0;i<allFilter.length;i++)
 function chooseFilter(e)
 {
     console.log(e.target.classList[1]);
-        let filter = e.target.classList[1];
+        let filter = e.target.classList[1];,
         let filterCode;
         for(let i=0;i<filterColor.length;i++)
             {
